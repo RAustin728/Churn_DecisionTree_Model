@@ -4,3 +4,22 @@ A decision tree machine learning model that takes in telecommunications provider
      This project developed and implemented a decision tree machine learning model in Python to predict customer turnover, or "churn", for a telecommunications service provider. The model split the data into train and test subsets and implemented a pipeline to prevent test-train contamination, or "leakage". Also implemented was the Grid Search Cross Validation method. 
      The first challenge was the fact that the data was a mix of categorical and numerical data. A column transformer was implemented to preprocess the data types: binarization by one-hot-encoding for the categorical data, and scaling for the numerical data. The data was highly imbalanced, with the majority of responses being "Did not churn". Because of that, standard accuracy testing was not adequate as it would be highly biased by all the "No churn" responses. Instead, an F1 score capturing precision and recall was used. As expected, the model performed much better at correctly classifying "No churn" than "Churn'. The second major challenge was the fact that the data was so imbalanced, the ROC curve could not be easily calculated. The array of "True Positives" were all NaN. More work will have to be done to work around that.
      Perhaps the most fundamental challenge was drawing insight from the model. According to the analysis, the optimal model would contain only four features out of the original 15-20: Tenure in Months, Whether the customer had dependents, Month-to-Month Contract, and Two-Year Contract. Those, and the other variables may be associated with churn behaviour, but they do not offer any actionable insights. There were no questions that addressed WHY customers churned. Was there a drop in the quality of service? An increase in price with/without a commensurate increase in service quality? Did a competitor offer a better deal? The value for money factor was not considered at all. A data scientist would hope for better data than what was available from the data set.
+
+<ins>Trial 1 Summary:</ins>
+No Churn (1524)
+Precision Score: 0.83
+Recall Score: 0.89
+f1 Score: 0.86
+
+Churn (589)
+Precision Score: 0.65
+Recall Score: 0.53
+f1 Score: 0.59
+
+PCA Selected Features:
+Dependents: NO
+Contract Month-to-Month
+Contract Two-Year
+Tenure in Months
+
+ROC: Undefined due to NaN in True Positives
